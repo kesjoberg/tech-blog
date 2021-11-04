@@ -1,5 +1,5 @@
 :root {
-  --primary: #3d5852;
+  --primary: #583d4f;
   --secondary: #86938f;
   --tertiary: #5e877f;
   --quatrinary: #6c6b67;
@@ -108,7 +108,8 @@ img {
 /* CARDS */
 .card {
   margin: 20px;
-  flex: 0 1 300px;
+  max-width: 80%;
+  /* flex: 0 1 300px; */
   border: 7px double var(--dark);
   border-radius: 10px;
   background-color: var(--light);
@@ -118,7 +119,7 @@ img {
 .login-card {
   margin: 0 0 20px 0;
   flex: 0 0 50%;
-  max-width: 50%;
+  max-width: 80%;
   padding: 5px;
   border: 3px solid var(--dark);
   border-radius: var(--border-radius);
@@ -128,12 +129,12 @@ img {
   color: var(--light);
 }
 
-.card header {
+.card-header {
   color: var(--light);
   font-weight: bold;
   text-transform: uppercase;
   margin: 0;
-  background-color: var(--tertiary);
+  background-color: var( --quatrinary);
   padding: 0.625rem;
   border-radius: calc(0.18rem - 1px) calc(0.18rem - 1px) 0 0;
 }
