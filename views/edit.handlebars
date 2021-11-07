@@ -4,6 +4,7 @@
     <form class="form editPost-form">
       <div class="form-group">
         <label for="title-post">Title:</label>
+        <input type="hidden" name="post-id" id="post-id" value="{{post.id}}" />
         <input class="form-input" type="text" id="title-post" value="{{post.title}}" />
       </div>
       <div class="form-group">

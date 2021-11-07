@@ -1,19 +1,38 @@
+<section class="container" style="align-items-center"  >
   <div class="card">
     <div class="card-header">
-      <h2>{{post.title}} {{post.user.name}} {{format_date project.date_created}}</h2>
+      <h2>{{post.title}} {{post.user.username}} {{format_date project.date_created}}</h2>
     </div>
     <div class="card-body">
       <p>{{post.description}}</p>
     </div>
   </div>
+
+ <section class="container">
+  {{#each post.comments as |comment|}}
+    <section class="card-comment">
+        <div class="card-body">
+          <p>{{comment.description}}</p>
+          <p class="card-text"><small class="text-muted"></small>-{{comment.user.username}},<span>{{format_date post.date_created}}</span></p>
+        </div>
+    </section>
+  {{/each}}
+</section>
+
   <div class="comment-card">
-    <form class="form comment-form">
+    <form class="form comment-form" id="new-comment-form">
       <div>
+         <input type="hidden" name="post_id" id="post_id" value="{{post.id}}" />
+        <input type="hidden" name="user_id" id="user_id" value="{{user_id}}" />
         <label for"comment">Comment:</label>
-        <input class="form-imput" type="text" id="comment">
+        <textarea class="form-imput" type="text" id="comment"></textarea>
       </div>
       <div class="form-group">
-        <button class="btn btn-primary" type="submit">Submit</button>
+        <button class="btn btn1" type="submit">Submit</button>
       </div>
     </form>
   </div>
+</section>
+
+
+  <script src='/js/comment.js'></script>
