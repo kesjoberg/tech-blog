@@ -2,6 +2,7 @@ const router = require('express').Router();
 const { Post } = require('../../models');
 const withAuth = require('../../utils/auth');
 
+// route api/post/
 router.post('/', withAuth, async (req, res) => {
   try {
     const createPost = await Post.create({
@@ -15,60 +16,57 @@ router.post('/', withAuth, async (req, res) => {
   }
 });
 
-router.get('/:id', withAuth, async (req, res) =>{
-  try{
-    const post = await Post.findOne({
-      where: { id: req.params.id, }
-    }) 
-    console.log(post);
-    res.render('my-posts', {
-      layout: 'dashboard',
-      post
-    })
-  } catch (err) {
-    res.status(500).json(err);
-  }
+// // route api/post/id
+// router.get('/:id', withAuth, async (req, res) =>{
+//   try{
+//     const post = await Post.findOne({
+//       where: { id: req.params.id, }
+//     }) 
+//     console.log(post);
+//     res.render('my-posts', {
+//       layout: 'dashboard',
+//       post
+//     })
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
   
-});
+// });
 
+// route api/post/id
 router.put('/:id', withAuth, async (req, res) => {
   try {
-    const updatedPost = await Post.update(
-      { 
-        title: req.body.title,
-        description: req.body.description,
-      },
-      {
+    const [updatedPost] = await Post.update(req.body, {
         where: {
           id: req.params.id,
-          user_id: req.session.user_id,
         },
-      }
-    );
-    console.log(updatedPost)
-    res.json(updatedPost);  
+      });
+    console.log('**********'+ updatedPost);
+    if (updatedPost >0) {
+      res.status(200).end();
+    } else {
+      res.status(404).end();
+    }
   } catch (err) {
     res.status(500).json(err);
   }
 });
   
 
-
+// route api/post/id
 router.delete('/:id', withAuth, async (req, res) => {
   try {
-    const postData = await Post.destroy({
+    const [postData] = await Post.destroy({
       where: {
         id: req.params.id,
-        user_id: req.session.user_id,
       },
     });
 
-    if (!postData) {
-      res.status(404).json({ message: 'No post found with this id!' });
-      return;
+    if (postData > 0) {
+     res.status(200).end();
+    } else {
+      res.status(404).end();
     }
-
-    res.status(200).json(postData);
   } catch (err) {
     res.status(500).json(err);
   }

@@ -3,8 +3,8 @@
   <div class="card">
     <a href="/post/{{id}}">
       <div class="card-header">
-        <h4> {{post.title}}</h4>
-        <p>{{post.user.username}} {{format_date post.date_created}}</p> 
+        <h3> {{post.title}}</h3>
+        <p>Posted by {{post.user.username}} on {{format_date post.date_created}}</p> 
       </div>
       <div class="card-body">
         <p>{{post.description}}</p>
