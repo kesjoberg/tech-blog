@@ -36,7 +36,7 @@ If you have any questions, please contact me at sjobergkarna@gmail.com or on Git
 
 
 ## Link to GitHub Repository
-https://github.com/kesjoberg/note-taker
+https://github.com/kesjoberg/tech-blog
 
 ## Link to Deployed Code
 https://kesjoberg-tech-blog.herokuapp.com/
